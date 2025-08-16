@@ -1,0 +1,25 @@
+{
+  "name": "control-ventas-despensa",
+  "version": "1.0.0",
+  "description": "Sistema de control de ventas para despensa con almacenamiento local en JSON",
+  "main": "index.html",
+  "scripts": {
+    "start": "start index.html",
+    "dev": "python -m http.server 8000"
+  },
+  "keywords": [
+    "ventas",
+    "despensa",
+    "control",
+    "json",
+    "html",
+    "css",
+    "javascript"
+  ],
+  "author": "Tu Nombre",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tuusuario/AdministracionVentasDespensa.git"
+  }
+}

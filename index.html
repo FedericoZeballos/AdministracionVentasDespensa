@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Control de Ventas</title>
+    <link rel="stylesheet" href="src/css/styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Despensa la Pochi</h1>
+
+      <div class="form-section">
+        <h2>Registrar Nueva Venta</h2>
+        <p class="form-note">
+          Puedes registrar ventas de días anteriores cambiando la fecha.
+          Formato: dd/mm/aaaa
+        </p>
+        <form id="ventaForm">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="monto">Monto Total ($):</label>
+              <input
+                type="text"
+                id="monto"
+                name="monto"
+                placeholder="0.00"
+                required
+              />
+              <div class="monto-preview">
+                <span>Monto formateado: </span>
+                <span id="montoFormateado">$0,00</span>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="fechaVenta">Fecha de Venta:</label>
+              <div class="date-input-container">
+                <input
+                  type="text"
+                  id="fechaVenta"
+                  name="fechaVenta"
+                  placeholder="dd/mm/aaaa"
+                  maxlength="10"
+                />
+                <button
+                  type="button"
+                  class="calendar-btn"
+                  onclick="mostrarCalendario('fechaVenta')"
+                >
+                  📅
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <button type="submit" class="btn-primary">Registrar Venta</button>
+        </form>
+      </div>
+
+      <div class="summary-section">
+        <h2>Resumen del Día</h2>
+        <div class="summary-cards">
+          <div class="summary-card">
+            <h3>Total Ventas</h3>
+            <p id="totalVentas">0</p>
+          </div>
+          <div class="summary-card">
+            <h3>Monto Total</h3>
+            <p id="montoTotal">$0,00</p>
+          </div>
+          <div class="summary-card">
+            <h3>Promedio</h3>
+            <p id="promedioVenta">$0,00</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="filter-section">
+        <h2>Filtrar por Fecha</h2>
+        <p class="filter-note">Ingresa las fechas en formato dd/mm/aaaa</p>
+        <div class="filter-controls">
+          <div class="form-group">
+            <label for="fechaInicio">Fecha Inicio:</label>
+            <div class="date-input-container">
+              <input
+                type="text"
+                id="fechaInicio"
+                name="fechaInicio"
+                placeholder="dd/mm/aaaa"
+                maxlength="10"
+              />
+              <button
+                type="button"
+                class="calendar-btn"
+                onclick="mostrarCalendario('fechaInicio')"
+              >
+                📅
+              </button>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="fechaFin">Fecha Fin:</label>
+            <div class="date-input-container">
+              <input
+                type="text"
+                id="fechaFin"
+                name="fechaFin"
+                placeholder="dd/mm/aaaa"
+                maxlength="10"
+              />
+              <button
+                type="button"
+                class="calendar-btn"
+                onclick="mostrarCalendario('fechaFin')"
+              >
+                📅
+              </button>
+            </div>
+          </div>
+          <button id="aplicarFiltro" class="btn-primary">Aplicar Filtro</button>
+          <button id="limpiarFiltro" class="btn-secondary">
+            Limpiar Filtro
+          </button>
+        </div>
+      </div>
+
+      <div class="history-section">
+        <h2>Historial de Ventas</h2>
+        <div class="table-container">
+          <table id="ventasTable">
+            <thead>
+              <tr>
+                <th>Fecha</th>
+                <th>Hora</th>
+                <th>Monto</th>
+              </tr>
+            </thead>
+            <tbody id="ventasTableBody"></tbody>
+          </table>
+        </div>
+        <button id="limpiarHistorial" class="btn-secondary">
+          Limpiar Historial
+        </button>
+      </div>
+    </div>
+
+    <!-- Modal del Calendario -->
+    <div id="calendarModal" class="calendar-modal">
+      <div class="calendar-content">
+        <div class="calendar-header">
+          <button
+            type="button"
+            class="calendar-nav-btn"
+            onclick="cambiarMes(-1)"
+          >
+            ‹
+          </button>
+          <h3 id="calendarTitle">Mes Año</h3>
+          <button
+            type="button"
+            class="calendar-nav-btn"
+            onclick="cambiarMes(1)"
+          >
+            ›
+          </button>
+        </div>
+        <div class="calendar-body">
+          <div class="calendar-weekdays">
+            <div>Dom</div>
+            <div>Lun</div>
+            <div>Mar</div>
+            <div>Mié</div>
+            <div>Jue</div>
+            <div>Vie</div>
+            <div>Sáb</div>
+          </div>
+          <div id="calendarDays" class="calendar-days"></div>
+        </div>
+        <div class="calendar-footer">
+          <button
+            type="button"
+            class="btn-secondary"
+            onclick="cerrarCalendario()"
+          >
+            Cancelar
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script src="src/js/script.js"></script>
+  </body>
+</html>
