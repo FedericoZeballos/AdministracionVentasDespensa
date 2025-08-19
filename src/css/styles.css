@@ -419,14 +419,7 @@ input[type="time"]:focus {
   to { transform: translateY(0); opacity: 1; }
 }
 
-/* Nota del filtro de fecha */
-.filter-note {
-  text-align: center;
-  color: #666;
-  font-size: 14px;
-  margin-bottom: 15px;
-  font-style: italic;
-}
+
 
 /* Nota del formulario */
 .form-note {

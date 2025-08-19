@@ -113,19 +113,6 @@ function establecerHoraActual() {
   }
 }
 
-// Función de debug para fechas
-function debugFecha(fecha, nombre) {
-  console.log(`🔍 DEBUG ${nombre}:`);
-  console.log(`  - Objeto Date:`, fecha);
-  console.log(`  - toString():`, fecha.toString());
-  console.log(`  - toISOString():`, fecha.toISOString());
-  console.log(`  - toLocaleDateString():`, fecha.toLocaleDateString("es-ES"));
-  console.log(`  - getDate():`, fecha.getDate());
-  console.log(`  - getMonth():`, fecha.getMonth());
-  console.log(`  - getFullYear():`, fecha.getFullYear());
-  console.log(`  - getTimezoneOffset():`, fecha.getTimezoneOffset(), "minutos");
-}
-
 // Función para formatear input de fecha
 function formatearFechaInput(input) {
   let valor = input.value.replace(/\D/g, ""); // Solo números
@@ -160,9 +147,6 @@ function formatearMontoEnTiempoReal(valor) {
 
 let ventas = [];
 let ventasFiltradas = [];
-let totalVentas = 0;
-let montoTotal = 0;
-let promedioVenta = 0;
 
 // Elementos del DOM
 const ventaForm = document.getElementById("ventaForm");
@@ -217,10 +201,6 @@ async function registrarVenta() {
     }
     fechaSeleccionada = fechaISO;
     console.log("🔍 Fecha convertida a ISO:", fechaSeleccionada);
-
-    // Debug adicional para verificar la conversión
-    const fechaObj = new Date(fechaSeleccionada);
-    debugFecha(fechaObj, "Fecha después de conversión");
   } else {
     console.log("🔍 Fecha ya en formato ISO:", fechaSeleccionada);
   }
@@ -366,8 +346,10 @@ async function cargarVentasDesdeAPI() {
     mostrarHistorial();
   } catch (err) {
     console.error("Error al cargar ventas:", err);
-    // Si no se puede cargar desde la API, usar datos locales
-    cargarDatosGuardados();
+    // Si no se puede cargar desde la API, mostrar mensaje de error
+    ventas = [];
+    actualizarResumen();
+    mostrarHistorial();
   }
 }
 
@@ -506,41 +488,6 @@ async function confirmarEliminarVenta() {
   } catch (error) {
     console.error("❌ Error al eliminar venta:", error);
     alert("No se pudo eliminar la venta: " + error.message);
-  }
-}
-
-// Función para guardar datos en localStorage
-function guardarDatos() {
-  const datos = {
-    ventas: ventas,
-    totalVentas: totalVentas,
-    montoTotal: montoTotal,
-    ultimaActualizacion: new Date().toISOString(),
-    version: "1.0",
-  };
-
-  localStorage.setItem("ventasData", JSON.stringify(datos));
-}
-
-// Función para cargar datos guardados
-function cargarDatosGuardados() {
-  const datosGuardados = localStorage.getItem("ventasData");
-
-  if (datosGuardados) {
-    try {
-      const datos = JSON.parse(datosGuardados);
-      ventas = datos.ventas || [];
-      totalVentas = datos.totalVentas || 0;
-      montoTotal = datos.montoTotal || 0;
-      actualizarResumen();
-      mostrarHistorial();
-    } catch (error) {
-      console.error("Error al cargar datos:", error);
-      // Si hay error, usar valores por defecto
-      ventas = [];
-      totalVentas = 0;
-      montoTotal = 0;
-    }
   }
 }
 
@@ -760,8 +707,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Establecer fecha actual en los filtros y en el campo de fecha de venta
   const hoy = new Date();
-  debugFecha(hoy, "Fecha del sistema");
-
   const fechaActual = obtenerFechaActualISO(); // Usar la función corregida
   const fechaActualLatinoamericana =
     formatearFechaLatinoamericanaParaInput(hoy);
