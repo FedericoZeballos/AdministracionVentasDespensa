@@ -51,6 +51,20 @@
                 </button>
               </div>
             </div>
+            <div class="form-group">
+              <label for="horaVenta">Hora de Venta:</label>
+              <div class="time-input-container">
+                <input type="time" id="horaVenta" name="horaVenta" required />
+                <button
+                  type="button"
+                  class="time-refresh-btn"
+                  onclick="establecerHoraActual()"
+                  title="Refrescar hora actual"
+                >
+                  🔄
+                </button>
+              </div>
+            </div>
           </div>
 
           <button type="submit" class="btn-primary">Registrar Venta</button>
@@ -77,7 +91,6 @@
 
       <div class="filter-section">
         <h2>Filtrar por Fecha</h2>
-        <p class="filter-note">Ingresa las fechas en formato dd/mm/aaaa</p>
         <div class="filter-controls">
           <div class="form-group">
             <label for="fechaInicio">Fecha Inicio:</label>
@@ -133,14 +146,40 @@
                 <th>Fecha</th>
                 <th>Hora</th>
                 <th>Monto</th>
+                <th>Acciones</th>
               </tr>
             </thead>
             <tbody id="ventasTableBody"></tbody>
           </table>
         </div>
-        <button id="limpiarHistorial" class="btn-secondary">
-          Limpiar Historial
-        </button>
+      </div>
+    </div>
+
+    <!-- Modal de Confirmación para Eliminar Venta -->
+    <div id="deleteModal" class="delete-modal">
+      <div class="delete-content">
+        <h3>Confirmar Eliminación</h3>
+        <p>¿Estás seguro de que quieres eliminar esta venta?</p>
+        <div class="delete-details">
+          <p><strong>Fecha:</strong> <span id="deleteVentaFecha"></span></p>
+          <p><strong>Monto:</strong> <span id="deleteVentaMonto"></span></p>
+        </div>
+        <div class="delete-actions">
+          <button
+            type="button"
+            class="btn-secondary"
+            onclick="cerrarModalEliminar()"
+          >
+            Cancelar
+          </button>
+          <button
+            type="button"
+            class="btn-danger"
+            onclick="confirmarEliminarVenta()"
+          >
+            Eliminar
+          </button>
+        </div>
       </div>
     </div>
 

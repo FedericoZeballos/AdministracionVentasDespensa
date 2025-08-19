@@ -45,7 +45,7 @@ h2 {
 
 .form-row {
     display: grid;
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: 2fr 1fr 1fr;
     gap: 20px;
     align-items: start;
 }
@@ -99,6 +99,57 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 input[type="date"]::-webkit-calendar-picker-indicator:hover {
   background-color: #f0f0f0;
+}
+
+/* Estilos para campos de hora */
+input[type="time"] {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: border-color 0.3s ease;
+  cursor: pointer;
+}
+
+input[type="time"]:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+/* Contenedor de input de hora con botón de refrescar */
+.time-input-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.time-input-container input {
+  flex: 1;
+  margin-right: 5px;
+}
+
+/* Botón de refrescar hora */
+.time-refresh-btn {
+  background: #27ae60;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 12px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  min-width: 40px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.time-refresh-btn:hover {
+  background: #229954;
+  transform: translateY(-1px);
 }
 
 /* Estilos específicos para el campo de fecha de venta */
@@ -255,6 +306,102 @@ input[type="date"]::-webkit-calendar-picker-indicator:hover {
   text-align: center;
 }
 
+/* Modal de eliminación */
+.delete-modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  animation: fadeIn 0.3s ease;
+}
+
+.delete-content {
+  background-color: white;
+  margin: 15% auto;
+  padding: 30px;
+  border-radius: 15px;
+  width: 400px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  animation: slideIn 0.3s ease;
+  text-align: center;
+}
+
+.delete-content h3 {
+  color: #e74c3c;
+  margin-bottom: 15px;
+  font-size: 1.5rem;
+}
+
+.delete-content p {
+  margin-bottom: 20px;
+  color: #2c3e50;
+}
+
+.delete-details {
+  background-color: #f8f9fa;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 25px;
+  text-align: left;
+}
+
+.delete-details p {
+  margin-bottom: 8px;
+  color: #2c3e50;
+}
+
+.delete-actions {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-direction: row-reverse;
+}
+
+.btn-danger {
+  background: #e74c3c;
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-danger:hover {
+  background: #c0392b;
+  transform: translateY(-2px);
+}
+
+/* Botón de eliminar en la tabla */
+.delete-btn {
+    background: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 6px 10px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    display: block;
+    margin: 0 auto;
+    min-width: 40px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.delete-btn:hover {
+  background: #c0392b;
+  transform: scale(1.1);
+}
+
 /* Animaciones del calendario */
 @keyframes fadeIn {
   from { opacity: 0; }
@@ -312,15 +459,27 @@ input[type="date"]:focus {
 }
 
 .filter-controls {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    display: flex;
+    flex-wrap: wrap;
     gap: 20px;
     align-items: end;
+}
+
+.filter-controls .form-group {
+    flex: 0 0 auto;
+    min-width: 180px;
+    max-width: 220px;
 }
 
 .filter-controls .btn-primary,
 .filter-controls .btn-secondary {
     margin-top: 0;
+    height: 56px; /* Altura exacta de los inputs (12px padding * 2 + 2px borde + 20px contenido) */
+    min-width: 120px; /* Ancho mínimo para los botones */
+    max-width: 150px; /* Ancho máximo para los botones */
+    align-self: center; /* Alinear con el centro de los inputs */
+    flex-shrink: 0; /* Evitar que los botones se compriman */
+    box-sizing: border-box; /* Incluir padding y borde en el cálculo de altura */
 }
 
 .btn-primary, .btn-secondary {
@@ -347,6 +506,11 @@ input[type="date"]:focus {
     background: #95a5a6;
     color: white;
     margin-top: 15px;
+    min-width: 120px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .btn-secondary:hover {
@@ -402,6 +566,11 @@ th, td {
     border-bottom: 1px solid #e0e0e0;
 }
 
+/* Centrar la columna de Acciones */
+td:last-child {
+    text-align: center;
+}
+
 th {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: white;
@@ -430,6 +599,19 @@ tr:hover {
     }
     
     .filter-controls {
-        grid-template-columns: 1fr;
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .filter-controls .form-group {
+        min-width: auto;
+        max-width: none;
+    }
+    
+    .filter-controls .btn-primary,
+    .filter-controls .btn-secondary {
+        width: 100%;
+        min-width: auto;
+        max-width: none;
     }
 } 

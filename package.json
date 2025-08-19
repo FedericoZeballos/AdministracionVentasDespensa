@@ -4,8 +4,9 @@
   "description": "Sistema de control de ventas para despensa con almacenamiento local en JSON",
   "main": "index.html",
   "scripts": {
-    "start": "start index.html",
-    "dev": "python -m http.server 8000"
+    "start": "node src/js/server.js",
+    "dev": "node src/js/server.js",
+    "open": "start index.html"
   },
   "keywords": [
     "ventas",
@@ -21,5 +22,11 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/tuusuario/AdministracionVentasDespensa.git"
+  },
+  "dependencies": {
+    "body-parser": "^2.2.0",
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "sqlite3": "^5.1.7"
   }
 }
