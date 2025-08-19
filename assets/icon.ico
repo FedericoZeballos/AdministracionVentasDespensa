@@ -1,0 +1,3 @@
+# Este es un archivo de icono .ico
+# En una implementación real, este sería un archivo binario de icono
+# Por ahora, creamos el archivo para que Electron no falle

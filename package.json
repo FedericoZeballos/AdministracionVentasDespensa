@@ -1,21 +1,26 @@
 {
   "name": "control-ventas-despensa",
   "version": "1.0.0",
-  "description": "Sistema de control de ventas para despensa con almacenamiento local en JSON",
-  "main": "index.html",
+  "description": "Sistema de control de ventas para despensa con base de datos SQLite y aplicación de escritorio Electron",
+  "main": "main.js",
   "scripts": {
     "start": "node src/js/server.js",
     "dev": "node src/js/server.js",
-    "open": "start index.html"
+    "electron": "electron .",
+    "build": "electron-builder",
+    "build-win": "electron-builder --win",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder"
   },
   "keywords": [
     "ventas",
     "despensa",
     "control",
-    "json",
-    "html",
-    "css",
-    "javascript"
+    "sqlite",
+    "electron",
+    "desktop-app",
+    "nodejs",
+    "express"
   ],
   "author": "Tu Nombre",
   "license": "MIT",
@@ -28,5 +33,13 @@
     "cors": "^2.8.5",
     "express": "^5.1.0",
     "sqlite3": "^5.1.7"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3",
+    "electron": "^28.0.0",
+    "electron-builder": "^24.6.4"
+  },
+  "build": {
+    "extends": "./electron-builder.json"
   }
 }
