@@ -359,6 +359,7 @@ input[type="time"]:focus {
     justify-content: center;
     gap: 15px;
     flex-direction: row-reverse;
+    align-items: center;
 }
 
 .btn-danger {
@@ -371,6 +372,11 @@ input[type="time"]:focus {
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
+  min-width: 120px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .btn-danger:hover {
@@ -505,7 +511,6 @@ input[type="date"]:focus {
 .btn-secondary {
     background: #95a5a6;
     color: white;
-    margin-top: 15px;
     min-width: 120px;
     height: 48px;
     display: flex;
