@@ -15,10 +15,12 @@ Sistema básico de control de ventas para despensa con base de datos SQLite y ap
 ## 🚀 **INSTALACIÓN Y USO**
 
 ### **Requisitos Previos**
+
 - **Node.js** (versión 18.x o superior)
 - Descargar desde: https://nodejs.org/
 
 ### **Ejecutar la Aplicación**
+
 1. **Doble clic** en `Control-Ventas.vbs`
 2. La aplicación se abrirá automáticamente
 3. ¡Listo para usar!
@@ -49,6 +51,7 @@ AdministracionVentasDespensa/
 ## 🛠️ **DESARROLLO**
 
 ### **Scripts Disponibles**
+
 ```bash
 npm start          # Iniciar servidor web
 npm run electron   # Ejecutar aplicación Electron
@@ -57,6 +60,7 @@ npm run build-win  # Construir para Windows
 ```
 
 ### **Tecnologías Utilizadas**
+
 - **Frontend**: HTML5, CSS3, JavaScript ES6+
 - **Backend**: Node.js, Express.js
 - **Base de Datos**: SQLite3
@@ -66,16 +70,19 @@ npm run build-win  # Construir para Windows
 ## 📊 **FUNCIONALIDADES**
 
 ### **Registro de Ventas**
+
 - Producto, cantidad, precio
 - Fecha y hora automática
 - Cálculo automático de totales
 
 ### **Gestión de Historial**
+
 - Visualización de todas las ventas
 - Filtrado por fechas
 - Búsqueda y ordenamiento
 
 ### **Eliminación Segura**
+
 - Botón de eliminación individual
 - Modal de confirmación
 - Borrado permanente de la base de datos
@@ -83,11 +90,13 @@ npm run build-win  # Construir para Windows
 ## 🔧 **CONFIGURACIÓN**
 
 ### **Base de Datos**
+
 - Se crea automáticamente en `data/ventas.db`
 - No requiere configuración manual
 - Persistente entre sesiones
 
 ### **Interfaz**
+
 - Diseño responsive
 - Tema claro y profesional
 - Navegación intuitiva
@@ -95,11 +104,13 @@ npm run build-win  # Construir para Windows
 ## 📦 **EMPAQUETADO**
 
 ### **Crear Ejecutable**
+
 ```bash
 npm run build-win
 ```
 
 ### **Archivos Generados**
+
 - `dist/` - Carpeta con archivos de distribución
 - `.exe` - Ejecutable para Windows
 - `installer.msi` - Instalador automático
@@ -107,14 +118,17 @@ npm run build-win
 ## 🐛 **SOLUCIÓN DE PROBLEMAS**
 
 ### **Error: "Node.js no está instalado"**
+
 - Descargar e instalar Node.js desde https://nodejs.org/
 - Reiniciar la computadora
 
 ### **La aplicación no se abre**
+
 - Verificar que no haya otra instancia ejecutándose
 - Verificar permisos de escritura en la carpeta
 
 ### **Base de datos no funciona**
+
 - Verificar que la carpeta `data/` tenga permisos de escritura
 - La base de datos se crea automáticamente
 
@@ -128,4 +142,4 @@ Sistema de Control de Ventas - Versión 1.0.0
 
 ---
 
-**¡Disfruta usando tu sistema de control de ventas!** 🎉 
+**¡Disfruta usando tu sistema de control de ventas!** 🎉
