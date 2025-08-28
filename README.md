@@ -1,6 +1,6 @@
 # 🛒 Control de Ventas - Aplicación de Escritorio
 
-Sistema completo de control de ventas para despensa con base de datos SQLite y aplicación de escritorio desarrollada con Electron.
+Sistema básico de control de ventas para despensa con base de datos SQLite y aplicación de escritorio desarrollada con Electron.
 
 ## 🎯 **CARACTERÍSTICAS PRINCIPALES**
 
